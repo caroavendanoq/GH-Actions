@@ -21,3 +21,5 @@ jobs:
 # Utilizar acción local
           - name: ls action
             uses: ./.github/actions/my-action
+            with:
+              message: "Buenas tardes"
