@@ -15,4 +15,5 @@ jobs:
 # Para dar permisos de ejecución al script.sh, para posteriormente ejecutar el script
           - name: ls
             run: |
-              chmod +x 
+              chmod +x script.sh
+              ./script.sh
