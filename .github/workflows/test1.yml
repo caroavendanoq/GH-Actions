@@ -49,7 +49,14 @@ jobs:
     - name: LS
       run: ls -al
 
-
-# Bloque de código reutilizable que realiza una tarea específica en un step
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.4
+    
+    - name: node version
+      run: node --version
+  
+# Actions. Bloque de código reutilizable que realiza una tarea específica en un step
 # Agrupar steps dentro de un action y reutilizarlo en diferentes workflows
+
+
 
