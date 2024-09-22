@@ -1,0 +1,18 @@
+# Nombre representativo para el workflow
+name: Hola Mundo
+
+# Eventos. Cuándo se va a ejecutar. En este caso se ejecuta al hacer push al repo.
+on: [push]
+
+# Jobs. Permiten ejecutar todo lo que se necesite dentro de un servidor, actions provee varios servidores: ubuntu, windows y mac
+# Para especificar SO usamos la directiva runs-on
+# Steps. Unidad más pequeña que eprmite realizar diferentes acciones
+# Acción. Hay varias directivas: run, que permite ejecutar comando
+jobs:
+  hola:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Hola Mundo
+      run: echo "Hola Mundo"
+
