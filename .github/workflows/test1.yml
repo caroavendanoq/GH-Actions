@@ -2,7 +2,9 @@
 name: Hola Mundo
 
 # Eventos. Cuándo se va a ejecutar. En este caso se ejecuta al hacer push al repo.
-on: [push]
+# Tipos de eventos: 
+# 1. Ejecutar workflow al crear PR. 
+on: [push, pull_request]
 
 # Jobs. Permiten ejecutar todo lo que se necesite dentro de un servidor, actions provee varios servidores: ubuntu, windows y mac
 # Para especificar SO usamos la directiva runs-on
