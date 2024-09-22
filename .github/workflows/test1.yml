@@ -16,3 +16,11 @@ jobs:
     - name: Hola Mundo
       run: echo "Hola Mundo"
 
+# Dentro de un workflow puedes tener múltiples jobs. Y cada uno se ejecuta en un servidor, entonces es necesario declarar runs-on en cada job
+  other:
+    runs-on: ubuntu-latest
+    steps:
+    - name: LS
+      run: ls -al
+
+
