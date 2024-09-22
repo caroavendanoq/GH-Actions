@@ -8,8 +8,11 @@ jobs:
     test-build:
         runs-on: ubuntu-latest
 
+# Situarnos en el repo
         steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+# Para dar permisos de ejecución al script.sh, para posteriormente ejecutar el script
           - name: ls
             run: |
-              echo "Hola Mundo" >> hola.txt
-              cat hola.txt
+              chmod +x 
