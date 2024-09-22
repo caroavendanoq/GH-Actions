@@ -8,6 +8,8 @@ on: [push]
 # Para especificar SO usamos la directiva runs-on
 # Steps. Unidad más pequeña que eprmite realizar diferentes acciones
 # Acción. Hay varias directivas: run, que permite ejecutar comando
+# Jobs se ejecutan independientes, pero de forma paralela, entonces van haber ocasiones en las que encesitamos que un job se 
+# ejecute después de otro job. Para ahcerlo usamos la directiva needs
 jobs:
   hola:
     runs-on: ubuntu-latest
@@ -29,6 +31,7 @@ jobs:
 # Dentro de un workflow puedes tener múltiples jobs. Y cada uno se ejecuta en un servidor, entonces es necesario declarar runs-on en cada job
   other:
     runs-on: ubuntu-latest
+    needs: [hola]
     steps:
     - name: LS
       run: ls -al
