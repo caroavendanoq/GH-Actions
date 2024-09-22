@@ -2,7 +2,17 @@
 name: Hola Mundo
 
 # Eventos. Cuándo se va a ejecutar. En este caso se ejecuta al hacer push al repo.
-on: [push]
+# Tipos de eventos: 
+# 1. Ejecutar workflow al crear PR. on: [push, pull_request]
+# a. Hacer push rama main, por ejemplo
+on: 
+  push:
+    branches:
+      - main
+  
+  pull_request:
+    branches:
+      - main
 
 # Jobs. Permiten ejecutar todo lo que se necesite dentro de un servidor, actions provee varios servidores: ubuntu, windows y mac
 # Para especificar SO usamos la directiva runs-on
@@ -33,7 +43,44 @@ jobs:
     runs-on: ubuntu-latest
     needs: [hola]
     steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+
     - name: LS
       run: ls -al
 
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.4
+# Steps cuando trabajamos con actions, disponemos de la directiva with, permite pasar parametros para el action
+      with:
+        node-version: latest
+    
+    - name: node version
+      run: node --version
+  
+# Actions. Bloque de código reutilizable que realiza una tarea específica en un step
+# Agrupar steps dentro de un action y reutilizarlo en diferentes workflows
+    - name: Install dependencies
+      run: echo "npm install, but remember you can use the marketplace to do this"
+
+# SERVICIOS
+# Como mySQL, por ejemplo
+# Actions provee forma de utilizar ese tipo de servicios usando contenedores 
+
+# Dockerhub, imagen de mySQL
+# Definir la directiva services
+  say-hello: 
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: example
+        ports:
+          - 3306:3306
+    
+    steps:
+      - name: Test
+        run: ls
 
